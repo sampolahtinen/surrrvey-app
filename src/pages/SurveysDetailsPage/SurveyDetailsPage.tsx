@@ -8,9 +8,14 @@ import styled from "styled-components";
 import { colors } from "../../styles/colors";
 
 export const Button = styled.button`
-  width: 130px;
-  height: 50px;
+  width: 100px;
+  height: 40px;
   font-size: 16px;
+  border-radius: 12px;
+  border: 1px ${colors.lila} solid;
+  background-color: ${colors.lila};
+  color: ${colors.offWhite};
+  cursor: pointer;
 `;
 
 export const NextQuestionButton = styled(Button)``;
@@ -43,12 +48,16 @@ export const ButtonsWrapper = styled.div`
   justify-content: space-between;
 `;
 
+export const QuestionsContainer = styled.div`
+  width: 400px;
+`;
 export const QuestionList = styled.ul``;
 export const QuestionTitle = styled.h3`
   margin-bottom: 2.4rem;
 `;
 export const Question = styled.li<{ selected: boolean }>`
   margin-bottom: 1.6rem;
+  border-radius: 12px;
   background-color: ${props =>
     props.selected ? colors.darkLila : colors.offWhite};
   color: ${props => (props.selected ? colors.offWhite : colors.darkGrey)};
@@ -149,7 +158,7 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
               <Title>{survey.title}</Title>
               <TagLine>{survey.tagline}</TagLine>
               <div>
-                <div style={{ marginBottom: "3.2rem" }}>
+                <QuestionsContainer style={{ marginBottom: "3.2rem" }}>
                   <QuestionTitle>
                     {survey.questions[currentQuestion].title}
                   </QuestionTitle>
@@ -165,7 +174,7 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
                       )
                     )}
                   </QuestionList>
-                </div>
+                </QuestionsContainer>
                 <ButtonsWrapper>
                   <PrevQuestionButton onClick={handlePrev}>
                     Back
