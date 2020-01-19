@@ -1,11 +1,13 @@
 import React, { FC, useState } from "react";
-import SurveyList from "../../components/SurveyList";
 import { useFetch } from "../../hooks/useFetch";
-import { getSurveyDetails } from "../../api/surveys";
+import { getSurveyDetails, postSurveyCompletion } from "../../api/surveys";
 import Layout from "../../components/Layout/Layout";
 import { SurveyDetailsPageProps } from "./types";
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { SurveyCompletion } from "../../api/types";
+import { Link } from "react-router-dom";
+import { useSpring, config } from "react-spring";
 
 export const Button = styled.button`
   width: 100px;
@@ -20,16 +22,46 @@ export const Button = styled.button`
 
 export const NextQuestionButton = styled(Button)``;
 export const PrevQuestionButton = styled(Button)``;
+export const SubmitButton = styled(Button)``;
+
 export const FlexWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const SuccessMessage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.white};
+  flex-wrap: wrap;
+  span {
+    display: block;
+    color: ${colors.green};
+    font-size: 64px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+  }
+  a {
+    font-size: 20px;
+  }
+`;
+
 export const Wrapper = styled.div`
+  position: relative;
   width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
+  z-index: 10;
 `;
 
 export const Title = styled.h1`
@@ -50,6 +82,7 @@ export const ButtonsWrapper = styled.div`
 
 export const QuestionsContainer = styled.div`
   width: 400px;
+  height: 300px;
 `;
 export const QuestionList = styled.ul``;
 export const QuestionTitle = styled.h3`
@@ -68,44 +101,44 @@ export const Question = styled.li<{ selected: boolean }>`
   }
 `;
 
-interface Answer {
-  question_id: string;
-  value: string;
-}
-
-interface SurveyCompletion {
-  completion: Answer[];
+export interface SubmitStatus {
+  status: string;
+  error: string;
 }
 
 const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
+  const id = match.params.id;
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({
+    status: "",
+    error: ""
+  });
+
   const initialState = {
     completion: []
   };
+
   const [selectedOptions, setSelectedOptions] = useState<SurveyCompletion>(
     initialState
   );
-  const id = match.params.id;
+
   const [loading, { survey }, error] = useFetch(getSurveyDetails, id);
 
   const handleNext = () => {
-    if (currentQuestion < survey.questions.length) {
+    if (currentQuestion < survey.questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
+
   const handlePrev = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
     }
   };
 
-  const getAnswer = (answer: string) => {
-    const answerIndex = selectedOptions.completion.findIndex(
-      elem => elem.value === answer
-    );
-
-    return answerIndex;
-  };
+  const getQuestionAnswer = (questionId: string) =>
+    selectedOptions.completion.find(elem => elem.question_id === questionId)
+      ?.value;
 
   const getQuestionIndex = (questionId: string) => {
     const answers = selectedOptions.completion;
@@ -113,6 +146,19 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
       elem => elem.question_id === questionId
     );
     return questionIndex;
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await postSurveyCompletion(id, selectedOptions);
+      console.log(response);
+      setSubmitStatus({
+        ...submitStatus,
+        status: response.data.status
+      });
+    } catch (error) {
+      // There is no errors from API
+    }
   };
 
   const handleClick = (question: string) => {
@@ -133,12 +179,10 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
       // if question is found from completion, update its value
     } else {
       const nextState = selectedOptions.completion;
-
       nextState[questionIndex] = {
         question_id: currentQuestionId,
         value: question
       };
-
       setSelectedOptions({
         completion: nextState
       });
@@ -167,7 +211,11 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
                       (option: string) => (
                         <Question
                           onClick={() => handleClick(option)}
-                          selected={getAnswer(option) > -1}
+                          selected={
+                            getQuestionAnswer(
+                              survey.questions[currentQuestion].id
+                            ) === option
+                          }
                         >
                           {option}
                         </Question>
@@ -184,6 +232,20 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
                   </NextQuestionButton>
                 </ButtonsWrapper>
               </div>
+              {currentQuestion === survey.questions.length - 1 && (
+                <Button
+                  onClick={handleSubmit}
+                  style={{ marginTop: "2rem", width: "150px", height: "50px" }}
+                >
+                  Submit
+                </Button>
+              )}
+              {submitStatus.status === "ok" && (
+                <SuccessMessage>
+                  <span>Success!</span>
+                  <Link to="/surveys">Go back to Survey list</Link>
+                </SuccessMessage>
+              )}
             </Wrapper>
           </>
         )}
