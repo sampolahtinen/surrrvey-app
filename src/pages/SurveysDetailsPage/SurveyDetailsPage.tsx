@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { colors } from "../../styles/colors";
 import { SurveyCompletion } from "../../api/types";
 import { Link } from "react-router-dom";
-import { useSpring, config } from "react-spring";
+import { config, useTransition, animated } from "react-spring";
 
 export const Button = styled.button`
   width: 100px;
@@ -29,7 +29,7 @@ export const FlexWrapper = styled.div`
   justify-content: center;
 `;
 
-export const SuccessMessage = styled.div`
+export const SuccessMessage = styled(animated.div)`
   position: absolute;
   top: 0;
   left: 0;
@@ -109,6 +109,7 @@ export interface SubmitStatus {
 const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
   const id = match.params.id;
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({
     status: "",
     error: ""
@@ -123,6 +124,16 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
   );
 
   const [loading, { survey }, error] = useFetch(getSurveyDetails, id);
+
+  const transitions = useTransition(isMessageVisible, null, {
+    from: { opacity: 0, transform: "scaleY(0)", transformOrigin: "top" },
+    enter: { opacity: 1, transform: "scaleY(1)", transformOrigin: "top" },
+    leave: { opacity: 0, transform: "scaleY(0)", transformOrigin: "bottom" },
+    config: {
+      ...config.stiff,
+      clamp: true
+    }
+  });
 
   const handleNext = () => {
     if (currentQuestion < survey.questions.length - 1) {
@@ -151,13 +162,16 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
   const handleSubmit = async () => {
     try {
       const response = await postSurveyCompletion(id, selectedOptions);
-      console.log(response);
       setSubmitStatus({
         ...submitStatus,
         status: response.data.status
       });
+      setIsMessageVisible(true);
     } catch (error) {
-      // There is no errors from API
+      setSubmitStatus({
+        ...submitStatus,
+        error
+      });
     }
   };
 
@@ -240,11 +254,14 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
                   Submit
                 </Button>
               )}
-              {submitStatus.status === "ok" && (
-                <SuccessMessage>
-                  <span>Success!</span>
-                  <Link to="/surveys">Go back to Survey list</Link>
-                </SuccessMessage>
+              {transitions.map(
+                ({ item, props }) =>
+                  item && (
+                    <SuccessMessage style={props}>
+                      <span>Success!</span>
+                      <Link to="/surveys">Go back to Survey list</Link>
+                    </SuccessMessage>
+                  )
               )}
             </Wrapper>
           </>
