@@ -2,122 +2,36 @@ import React, { FC, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { getSurveyDetails, postSurveyCompletion } from "../../api/surveys";
 import Layout from "../../components/Layout/Layout";
-import { SurveyDetailsPageProps } from "./types";
+import { SurveyDetailsPageProps, SubmitStatus } from "./types";
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
 import { SurveyCompletion } from "../../api/types";
 import { Link } from "react-router-dom";
-import { config, useTransition, animated } from "react-spring";
-
-export const Button = styled.button`
-  width: 100px;
-  height: 40px;
-  font-size: 16px;
-  border-radius: 12px;
-  border: 1px ${colors.lila} solid;
-  background-color: ${colors.lila};
-  color: ${colors.offWhite};
-  cursor: pointer;
-`;
-
-export const NextQuestionButton = styled(Button)``;
-export const PrevQuestionButton = styled(Button)``;
-export const SubmitButton = styled(Button)``;
-
-export const FlexWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const SuccessMessage = styled(animated.div)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${colors.white};
-  flex-wrap: wrap;
-  span {
-    display: block;
-    color: ${colors.green};
-    font-size: 64px;
-    font-weight: 600;
-    width: 100%;
-    text-align: center;
-  }
-  a {
-    font-size: 20px;
-  }
-`;
-
-export const Wrapper = styled.div`
-  position: relative;
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  z-index: 10;
-`;
-
-export const Title = styled.h1`
-  margin-bottom: 2.4rem;
-`;
-
-export const TagLine = styled.h2`
-  margin-bottom: 6.4rem;
-  color: ${colors.grey};
-  font-weight: 300;
-  opacity: 0.5;
-`;
-
-export const ButtonsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const QuestionsContainer = styled.div`
-  width: 400px;
-  height: 300px;
-`;
-export const QuestionList = styled.ul``;
-export const QuestionTitle = styled.h3`
-  margin-bottom: 2.4rem;
-`;
-export const Question = styled.li<{ selected: boolean }>`
-  margin-bottom: 1.6rem;
-  border-radius: 12px;
-  background-color: ${props =>
-    props.selected ? colors.darkLila : colors.offWhite};
-  color: ${props => (props.selected ? colors.offWhite : colors.darkGrey)};
-  padding: 0.8rem;
-  &:hover {
-    background-color: ${colors.darkLila};
-    color: ${colors.offWhite};
-  }
-`;
-
-export interface SubmitStatus {
-  status: string;
-  error: string;
-}
+import { config, useTransition } from "react-spring";
+import SurveyQuestion from "../../components/SurveyQuestion/SurveyQuestion";
+import {
+  Wrapper,
+  ButtonsWrapper,
+  PrevQuestionButton,
+  NextQuestionButton,
+  Button,
+  SuccessMessage,
+  Title,
+  TagLine,
+  FlexWrapper
+} from "./SurveyDetailsPage.styles";
 
 const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
   const id = match.params.id;
+  const initialState = {
+    completion: []
+  };
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({
     status: "",
     error: ""
   });
-
-  const initialState = {
-    completion: []
-  };
 
   const [selectedOptions, setSelectedOptions] = useState<SurveyCompletion>(
     initialState
@@ -203,8 +117,6 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
     }
   };
 
-  console.log(survey);
-
   return (
     <Layout>
       <FlexWrapper className="survey-deytails-page">
@@ -216,27 +128,15 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
               <Title>{survey.title}</Title>
               <TagLine>{survey.tagline}</TagLine>
               <div>
-                <QuestionsContainer style={{ marginBottom: "3.2rem" }}>
-                  <QuestionTitle>
-                    {survey.questions[currentQuestion].title}
-                  </QuestionTitle>
-                  <QuestionList>
-                    {survey.questions[currentQuestion].options.map(
-                      (option: string) => (
-                        <Question
-                          onClick={() => handleClick(option)}
-                          selected={
-                            getQuestionAnswer(
-                              survey.questions[currentQuestion].id
-                            ) === option
-                          }
-                        >
-                          {option}
-                        </Question>
-                      )
-                    )}
-                  </QuestionList>
-                </QuestionsContainer>
+                <SurveyQuestion
+                  title={survey.questions[currentQuestion].title}
+                  options={survey.questions[currentQuestion].options}
+                  selectedOption={
+                    getQuestionAnswer(survey.questions[currentQuestion].id) ||
+                    ""
+                  }
+                  onClick={handleClick}
+                />
                 <ButtonsWrapper>
                   <PrevQuestionButton onClick={handlePrev}>
                     Back
