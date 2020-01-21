@@ -1,6 +1,6 @@
 export interface SurveyQuestionProps {
   title: string;
   options: string[];
-  onClick: (param: string) => void;
+  onOptionSelect: (param: string) => void;
   selectedOption: string;
 }

@@ -4,7 +4,8 @@ export interface SurveyDetailsPageProps extends RouteComponentProps {
   match: match<{ id: string }>;
 }
 
-export interface SubmitStatus {
+export interface FormStatus {
   status: string;
   error: string;
+  isCompleted: boolean;
 }

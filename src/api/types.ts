@@ -1,8 +1,8 @@
 export interface AllSurveysResponse {
-  surveys: SurveyResponse[];
+  surveys: APISurveyResponse[];
 }
 
-export interface SurveyResponse {
+export interface APISurveyResponse {
   id: string;
   title: string;
   tagline: string;
@@ -13,6 +13,16 @@ export interface QuestionAnswer {
   value: string;
 }
 
-export interface SurveyCompletion {
+export interface APISurveyCompletion {
   completion: QuestionAnswer[];
+}
+
+export interface APISurveyQuestion {
+  id: string;
+  title: string;
+  options: string[];
+}
+
+export interface APISurveyDetailsResponse extends APISurveyResponse {
+  questions: APISurveyQuestion[];
 }

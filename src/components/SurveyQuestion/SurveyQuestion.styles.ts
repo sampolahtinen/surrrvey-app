@@ -12,7 +12,7 @@ export const QuestionsContainer = styled.div`
   height: 300px;
 `;
 
-export const Question = styled.li<{ selected: boolean }>`
+export const Option = styled.li<{ selected: boolean }>`
   margin-bottom: 1.6rem;
   border-radius: 12px;
   background-color: ${props =>

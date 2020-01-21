@@ -3,7 +3,7 @@ import {
   QuestionsContainer,
   QuestionTitle,
   QuestionList,
-  Question
+  Option
 } from "./SurveyQuestion.styles";
 import { SurveyQuestionProps } from "./types";
 
@@ -11,20 +11,20 @@ const SurveyQuestion: React.FC<SurveyQuestionProps> = ({
   options,
   selectedOption,
   title,
-  onClick
+  onOptionSelect
 }) => {
   return (
     <QuestionsContainer style={{ marginBottom: "3.2rem" }}>
       <QuestionTitle>{title}</QuestionTitle>
       <QuestionList>
         {options.map((option: string) => (
-          <Question
+          <Option
             key={title + option}
-            onClick={() => onClick(option)}
+            onClick={() => onOptionSelect(option)}
             selected={selectedOption === option}
           >
             {option}
-          </Question>
+          </Option>
         ))}
       </QuestionList>
     </QuestionsContainer>

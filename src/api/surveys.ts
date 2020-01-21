@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SurveyCompletion } from "./types";
+import { APISurveyCompletion } from "./types";
 
 export function getAllSurveys() {
   const apiUrl =
@@ -19,7 +19,7 @@ export function getSurveyDetails(id: string) {
   });
 }
 
-export function postSurveyCompletion(id: string, data: SurveyCompletion) {
+export function postSurveyCompletion(id: string, data: APISurveyCompletion) {
   const apiUrl = `https://private-anon-992bc3912d-surveysmock.apiary-mock.com/api/surveys/${id}/completions`;
   return axios.request({
     method: "post",

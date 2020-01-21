@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 export const SurveyListContainer = styled.div`
   width: 100%;
 `;
+
 export const List = styled.div``;
-export const Title = styled.h3``;
 
 export const TagLine = styled.span`
   color: ${colors.grey};
