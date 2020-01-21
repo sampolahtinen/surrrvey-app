@@ -1,16 +1,25 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, ButtonHTMLAttributes } from "react";
 import SurveyQuestion from "../SurveyQuestion";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Button } from "../Elements/Button";
 import { QuestionCarouselProps } from "./types";
+import { colors } from "../../styles/colors";
 
 export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export const NextQuestionButton = styled(Button)``;
-export const PrevQuestionButton = styled(Button)``;
+export const NextQuestionButton = styled(Button)`
+  ${props =>
+    props.disabled &&
+    css`
+      background-color: grey;
+      border: 0;
+    `}
+`;
+
+export const PrevQuestionButton = styled(NextQuestionButton)``;
 
 const QuestionCarousel: FC<QuestionCarouselProps> = ({
   questions,
@@ -24,17 +33,8 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
     onQuestionChange(currentQuestionIndex);
   }, [currentQuestionIndex]);
 
-  const handleNext = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestion(currentQuestionIndex + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestion(currentQuestionIndex - 1);
-    }
-  };
+  const handleNext = () => setCurrentQuestion(currentQuestionIndex + 1);
+  const handlePrev = () => setCurrentQuestion(currentQuestionIndex - 1);
 
   return (
     <div>
@@ -45,8 +45,18 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
         onOptionSelect={onOptionSelect}
       />
       <ButtonsWrapper>
-        <PrevQuestionButton onClick={handlePrev}>Back</PrevQuestionButton>
-        <NextQuestionButton onClick={handleNext}>Next</NextQuestionButton>
+        <PrevQuestionButton
+          onClick={handlePrev}
+          disabled={currentQuestionIndex === 0}
+        >
+          Back
+        </PrevQuestionButton>
+        <NextQuestionButton
+          onClick={handleNext}
+          disabled={currentQuestionIndex === questions.length - 1}
+        >
+          Next
+        </NextQuestionButton>
       </ButtonsWrapper>
     </div>
   );

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question Component renders 1`] = `
+<li
+  className="sc-AykKF iPtPKR"
+  selected={false}
+/>
+`;
+
+exports[`Question Component renders correctly when selected 1`] = `
+<li
+  className="sc-AykKF jqoTha"
+  selected={true}
+/>
+`;
+
+exports[`SurveyQuestion Component renders 1`] = `
+<styled.div
+  style={
+    Object {
+      "marginBottom": "3.2rem",
+    }
+  }
+>
+  <styled.h3>
+    testTitle
+  </styled.h3>
+  <styled.ul>
+    <styled.li
+      key="testTitletest1"
+      onClick={[Function]}
+      selected={true}
+    >
+      test1
+    </styled.li>
+    <styled.li
+      key="testTitletest2"
+      onClick={[Function]}
+      selected={false}
+    >
+      test2
+    </styled.li>
+  </styled.ul>
+</styled.div>
+`;

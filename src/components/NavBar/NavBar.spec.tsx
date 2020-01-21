@@ -11,10 +11,8 @@ describe("NavBar Component", () => {
       <NavBar />
     </MemoryRouter>
   );
-  it("renders", () => {
-    expect(wrapper.find(".navbar").exists()).toEqual(true);
-  });
-  it("displays two three items", () => {
+
+  it("displays two nav items", () => {
     expect(wrapper.find(StyledNavLink)).toHaveLength(routes.length);
   });
 });
