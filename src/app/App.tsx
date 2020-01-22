@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router";
-import Layout from "../components/Layout/Layout";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import SurveysPage from "../pages/SurveyPage";
 import SurveyDetailsPage from "../pages/SurveysDetailsPage";

@@ -1,9 +1,8 @@
-import React, { FC, useState, useEffect, ButtonHTMLAttributes } from "react";
+import React, { FC, useState, useEffect } from "react";
 import SurveyQuestion from "../SurveyQuestion";
 import styled, { css } from "styled-components";
 import { Button } from "../Elements/Button";
 import { QuestionCarouselProps } from "./types";
-import { colors } from "../../styles/colors";
 
 export const ButtonsWrapper = styled.div`
   display: flex;
@@ -31,7 +30,7 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
 
   useEffect(() => {
     onQuestionChange(currentQuestionIndex);
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, onQuestionChange]);
 
   const handleNext = () => setCurrentQuestion(currentQuestionIndex + 1);
   const handlePrev = () => setCurrentQuestion(currentQuestionIndex - 1);

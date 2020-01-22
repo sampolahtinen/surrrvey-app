@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { FC } from "react";
 import {
   Container,
   WelcomeText,
@@ -9,7 +9,7 @@ import {
 } from "./LandingPage.styles";
 import { LandingPageProps } from "./types";
 import Bubble from "../../components/Bubble";
-import { useSpring, config, useTransition, animated } from "react-spring";
+import { useSpring, config, useTransition } from "react-spring";
 
 const LandingPage: FC<LandingPageProps> = ({ history }) => {
   const handleScroll = () => {

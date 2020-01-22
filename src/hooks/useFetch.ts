@@ -21,6 +21,6 @@ export function useFetch(
       }
     };
     fetchData();
-  }, [params]);
+  }, [params, callback]);
   return [isLoading, results, error];
 }
