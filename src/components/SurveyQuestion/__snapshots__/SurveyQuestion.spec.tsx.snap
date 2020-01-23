@@ -2,14 +2,14 @@
 
 exports[`Question Component renders 1`] = `
 <li
-  className="sc-AykKF iPtPKR"
+  className="sc-AykKF irIltD"
   selected={false}
 />
 `;
 
 exports[`Question Component renders correctly when selected 1`] = `
 <li
-  className="sc-AykKF jqoTha"
+  className="sc-AykKF bRvOzM"
   selected={true}
 />
 `;

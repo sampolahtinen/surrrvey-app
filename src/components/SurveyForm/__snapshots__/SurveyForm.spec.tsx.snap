@@ -119,7 +119,7 @@ exports[`SurveyForm  Component renders 1`] = `
                         selected={false}
                       >
                         <li
-                          className="sc-AykKF iPtPKR"
+                          className="sc-AykKF irIltD"
                           onClick={[Function]}
                           selected={false}
                         >
@@ -132,7 +132,7 @@ exports[`SurveyForm  Component renders 1`] = `
                         selected={false}
                       >
                         <li
-                          className="sc-AykKF iPtPKR"
+                          className="sc-AykKF irIltD"
                           onClick={[Function]}
                           selected={false}
                         >

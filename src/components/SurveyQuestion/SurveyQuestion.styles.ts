@@ -23,6 +23,7 @@ export const Option = styled.li<{ selected: boolean }>`
     props.selected ? colors.darkLila : colors.offWhite};
   color: ${props => (props.selected ? colors.offWhite : colors.darkGrey)};
   padding: 0.8rem;
+  cursor: pointer;
   &:hover {
     background-color: ${colors.darkLila};
     color: ${colors.offWhite};

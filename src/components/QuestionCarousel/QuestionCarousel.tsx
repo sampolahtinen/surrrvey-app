@@ -7,6 +7,7 @@ import {
   PrevQuestionButton,
   NextQuestionButton
 } from "./QuestionCarousel.styles";
+import { isLastIndex } from "../../utils/helpers";
 
 const QuestionCarousel: FC<QuestionCarouselProps> = ({
   questions,
@@ -20,10 +21,11 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
     onQuestionChange(currentQuestionIndex);
   }, [currentQuestionIndex, onQuestionChange]);
 
-  const handleNext = (e: React.MouseEvent<any>) => {
-    e.preventDefault();
+  const handleNext = (e?: React.MouseEvent<any>) => {
+    e?.preventDefault();
     setCurrentQuestion(currentQuestionIndex + 1);
   };
+
   const handlePrev = (e: React.MouseEvent<any>) => {
     e.preventDefault();
     setCurrentQuestion(currentQuestionIndex - 1);
@@ -35,7 +37,11 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
         title={questions[currentQuestionIndex].title}
         options={questions[currentQuestionIndex].options}
         selectedOption={selectedOption}
-        onOptionSelect={onOptionSelect}
+        onOptionSelect={param => {
+          onOptionSelect(param);
+          !isLastIndex(questions, currentQuestionIndex) &&
+            setTimeout(() => handleNext(), 100);
+        }}
       />
       <ButtonsWrapper>
         <PrevQuestionButton
