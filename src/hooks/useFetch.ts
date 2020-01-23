@@ -9,7 +9,6 @@ export function useFetch(
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log("running");
     const fetchData = async () => {
       try {
         const response = await callback(params);

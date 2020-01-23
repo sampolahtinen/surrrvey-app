@@ -7,6 +7,6 @@ export const LayoutContainer = styled.div`
   height: 100vh;
 
   @media screen and (max-width: ${breakPoints.phone}) {
-    padding: 10rem 2.5rem;
+    padding: 5rem 2.5rem;
   }
 `;

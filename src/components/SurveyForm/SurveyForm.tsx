@@ -104,7 +104,7 @@ const SurveyForm: FC<SurveyFormProps> = ({
       {transitions.map(
         ({ item, props }) =>
           item && (
-            <SuccessMessage style={props}>
+            <SuccessMessage key={props.toString()} style={props}>
               <span>Success!</span>
               <span style={{ fontSize: "20px", color: colors.darkGrey }}>
                 Your response was delivered.
