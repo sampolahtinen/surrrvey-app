@@ -35,7 +35,6 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
   return (
     <Layout>
       <FlexWrapper className="survey-deytails-page">
-        {/* //TODO: create loading component */}
         {loading ? (
           <Loading>Loading</Loading>
         ) : (
