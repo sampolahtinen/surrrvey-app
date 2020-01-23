@@ -153,7 +153,7 @@ exports[`SurveyForm  Component renders 1`] = `
                   onClick={[Function]}
                 >
                   <button
-                    className="sc-AykKG sc-AykKI sc-AykKK hvtdWk"
+                    className="sc-AykKG sc-AykKI sc-AykKK gOdPHc"
                     disabled={true}
                     onClick={[Function]}
                   >
@@ -165,7 +165,7 @@ exports[`SurveyForm  Component renders 1`] = `
                   onClick={[Function]}
                 >
                   <button
-                    className="sc-AykKG sc-AykKI kANYNs"
+                    className="sc-AykKG sc-AykKI bzjxMr"
                     disabled={false}
                     onClick={[Function]}
                   >
