@@ -14,6 +14,7 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
     isCompleted: false,
     error: ""
   });
+
   const postCompletion = async (formData: any) => {
     try {
       const response = await postSurveyCompletion(id, formData);
@@ -29,6 +30,7 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
       });
     }
   };
+
   return (
     <Layout>
       <FlexWrapper className="survey-deytails-page">
@@ -45,7 +47,7 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
             />
           </>
         )}
-        {!error && <span>{error}</span>}
+        {error && <span>{error}</span>}
       </FlexWrapper>
     </Layout>
   );

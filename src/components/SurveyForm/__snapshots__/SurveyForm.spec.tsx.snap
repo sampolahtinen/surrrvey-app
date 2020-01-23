@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SurveyForm  Component renders 1`] = `
+<SurveyForm
+  isCompleted={false}
+  onSubmit={[MockFunction]}
+  questions={
+    Array [
+      Object {
+        "id": "001",
+        "options": Array [
+          "test1",
+          "test2",
+        ],
+        "title": "firstQuestion",
+      },
+      Object {
+        "id": "002",
+        "options": Array [
+          "test1",
+          "test2",
+        ],
+        "title": "secondQuestion",
+      },
+    ]
+  }
+  subtitle="testSubtitle"
+  title="testTitle"
+>
+  <styled.form>
+    <form
+      className="sc-fzXfLO fWeOZL"
+    >
+      <styled.h1>
+        <h1
+          className="sc-fzXfLP xGwGK"
+        >
+          testTitle
+        </h1>
+      </styled.h1>
+      <styled.h2>
+        <h2
+          className="sc-fzXfLQ jMdyVK"
+        >
+          testSubtitle
+        </h2>
+      </styled.h2>
+      <QuestionCarousel
+        onOptionSelect={[Function]}
+        onQuestionChange={[Function]}
+        questions={
+          Array [
+            Object {
+              "id": "001",
+              "options": Array [
+                "test1",
+                "test2",
+              ],
+              "title": "firstQuestion",
+            },
+            Object {
+              "id": "002",
+              "options": Array [
+                "test1",
+                "test2",
+              ],
+              "title": "secondQuestion",
+            },
+          ]
+        }
+        selectedOption=""
+      >
+        <div>
+          <SurveyQuestion
+            onOptionSelect={[Function]}
+            options={
+              Array [
+                "test1",
+                "test2",
+              ]
+            }
+            selectedOption=""
+            title="firstQuestion"
+          >
+            <styled.div
+              style={
+                Object {
+                  "marginBottom": "3.2rem",
+                }
+              }
+            >
+              <div
+                className="sc-AykKE FJqhk"
+                style={
+                  Object {
+                    "marginBottom": "3.2rem",
+                  }
+                }
+              >
+                <styled.h3>
+                  <h3
+                    className="sc-AykKD bLtnPA"
+                  >
+                    firstQuestion
+                  </h3>
+                </styled.h3>
+                <styled.ul>
+                  <ul
+                    className="sc-AykKC fmcvyS"
+                  >
+                    <styled.li
+                      key="firstQuestiontest1"
+                      onClick={[Function]}
+                      selected={false}
+                    >
+                      <li
+                        className="sc-AykKF iPtPKR"
+                        onClick={[Function]}
+                        selected={false}
+                      >
+                        test1
+                      </li>
+                    </styled.li>
+                    <styled.li
+                      key="firstQuestiontest2"
+                      onClick={[Function]}
+                      selected={false}
+                    >
+                      <li
+                        className="sc-AykKF iPtPKR"
+                        onClick={[Function]}
+                        selected={false}
+                      >
+                        test2
+                      </li>
+                    </styled.li>
+                  </ul>
+                </styled.ul>
+              </div>
+            </styled.div>
+          </SurveyQuestion>
+          <styled.div>
+            <div
+              className="sc-AykKH iijtjJ"
+            >
+              <Styled(Styled(styled.button))
+                disabled={true}
+                onClick={[Function]}
+              >
+                <button
+                  className="sc-AykKG sc-AykKI sc-AykKJ bxMDJn"
+                  disabled={true}
+                  onClick={[Function]}
+                >
+                  Back
+                </button>
+              </Styled(Styled(styled.button))>
+              <Styled(styled.button)
+                disabled={false}
+                onClick={[Function]}
+              >
+                <button
+                  className="sc-AykKG sc-AykKI kANYNs"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  Next
+                </button>
+              </Styled(styled.button)>
+            </div>
+          </styled.div>
+        </div>
+      </QuestionCarousel>
+    </form>
+  </styled.form>
+</SurveyForm>
+`;

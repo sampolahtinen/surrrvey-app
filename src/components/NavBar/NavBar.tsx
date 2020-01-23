@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, StyledNavLink } from "./NavBar.styles";
-import { routes } from "../../lib/routes";
+import { routes } from "../../globals/routes";
 
 const NavBar = () => {
   return (

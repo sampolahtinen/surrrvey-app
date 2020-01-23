@@ -2,7 +2,6 @@
 
 exports[`NavBar Component renders 1`] = `
 <Fragment>
-  <Memo(GlobalStyleComponent) />
   <NavBar />
   <styled.div>
     <div
