@@ -1,5 +1,5 @@
 import React from "react";
-import { mount } from "enzyme";
+import { shallow } from "enzyme";
 import LandingPage from "./LandingPage";
 import { createMemoryHistory } from "history";
 import {
@@ -14,7 +14,7 @@ const mockHistory = createMemoryHistory();
 // In order to make snapshot possible, react-spring's useTransition should be mocked.
 describe("LandingPage Component", () => {
   mockHistory.push = jest.fn();
-  const wrapper = mount(<LandingPage history={mockHistory} />);
+  const wrapper = shallow(<LandingPage history={mockHistory} />);
   it("displays welcome text", () => {
     expect(wrapper.find(WelcomeText)).toHaveLength(2);
   });

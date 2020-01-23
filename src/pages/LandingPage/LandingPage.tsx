@@ -34,11 +34,9 @@ const LandingPage: FC<LandingPageProps> = ({ history }) => {
       onTouchMove={handleScroll}
     >
       {transitions.map(({ item, props }) => (
-        <>
-          <WelcomeText key={item} style={props}>
-            {item}
-          </WelcomeText>
-        </>
+        <WelcomeText key={item} style={props}>
+          {item}
+        </WelcomeText>
       ))}
       <FlexWrapper>
         <CallToActionButton
