@@ -7,8 +7,7 @@ import { GlobalStyle } from "./styles/globalStyles";
 
 ReactDOM.render(
   <BrowserRouter>
-    <GlobalStyle />
-    {/* <Provider store={store}> */}
+    <GlobalStyle />\{/* <Provider store={store}> */}
     <App />
     {/* </Provider> */}
   </BrowserRouter>,

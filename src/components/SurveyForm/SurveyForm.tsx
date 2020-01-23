@@ -64,7 +64,8 @@ const SurveyForm: FC<SurveyFormProps> = ({
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     onSubmit(selectedOptions);
   };
 

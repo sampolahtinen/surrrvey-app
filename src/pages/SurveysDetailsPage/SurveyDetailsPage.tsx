@@ -1,10 +1,13 @@
 import React, { FC, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
+import whyDidYouRender from "@welldone-software/why-did-you-render";
 import { getSurveyDetails, postSurveyCompletion } from "../../api/surveys";
 import Layout from "../../components/Layout/Layout";
 import { SurveyDetailsPageProps, FormStatus } from "./types";
 import { FlexWrapper } from "./SurveyDetailsPage.styles";
 import SurveyForm from "../../components/SurveyForm";
+
+whyDidYouRender(React);
 
 const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
   const id = match.params.id;
@@ -52,5 +55,7 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
     </Layout>
   );
 };
+
+SurveyDetailsPage.whyDidYouRender = true;
 
 export default SurveyDetailsPage;
