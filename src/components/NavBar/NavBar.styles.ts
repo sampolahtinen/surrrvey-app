@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { breakPoints } from "../../styles/breakpoints";
 
 export const StyledNavLink = styled(NavLink)`
   color: ${colors.darkLila};
@@ -24,6 +25,7 @@ export const Nav = styled.div`
   align-items: center;
   margin-bottom: 1.6rem;
   padding: 5rem 10rem;
-  /* background-color: ${colors.darkGrey}; */
-  /* box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.3); */
+  @media (max-width: ${breakPoints.phone}) {
+    padding: 5rem 2.5rem;
+  }
 `;

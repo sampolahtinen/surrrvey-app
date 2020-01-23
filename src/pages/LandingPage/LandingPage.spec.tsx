@@ -2,7 +2,11 @@ import React from "react";
 import { mount } from "enzyme";
 import LandingPage from "./LandingPage";
 import { createMemoryHistory } from "history";
-import { WelcomeText, ScrollText, Container } from "./LandingPage.styles";
+import {
+  WelcomeText,
+  Container,
+  CallToActionButton
+} from "./LandingPage.styles";
 
 const mockHistory = createMemoryHistory();
 
@@ -14,17 +18,16 @@ describe("LandingPage Component", () => {
   // });
 
   it("displays welcome text", () => {
-    expect(wrapper.find(WelcomeText).text()).toEqual(
-      "Welcome to Surrrvey App!"
-    );
+    expect(wrapper.find(WelcomeText)).toHaveLength(2);
   });
 
-  it("displays scroll text", () => {
-    expect(wrapper.find(ScrollText).text()).toEqual("Scroll");
+  it("triggers page navigation on button click", () => {
+    wrapper.find(CallToActionButton).simulate("click");
+    expect(mockHistory.push).toHaveBeenCalled();
   });
 
   it("triggers onWheel event", () => {
     wrapper.find(Container).simulate("wheel");
-    expect(mockHistory.push).toHaveBeenCalled();
+    expect(mockHistory.push).toHaveBeenCalledTimes(2);
   });
 });

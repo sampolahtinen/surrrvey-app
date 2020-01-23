@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { animated } from "react-spring";
 import { colors } from "../../styles/colors";
+import { breakPoints } from "../../styles/breakpoints";
 
 export const SuccessMessage = styled(animated.div)`
   position: absolute;
@@ -28,13 +29,15 @@ export const SuccessMessage = styled(animated.div)`
 
 export const Form = styled.form`
   position: relative;
-  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
   z-index: 10;
+  @media (max-width: ${breakPoints.phone}) {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h1`
@@ -45,5 +48,6 @@ export const Subtitle = styled.h2`
   margin-bottom: 6.4rem;
   color: ${colors.grey};
   font-weight: 300;
+  text-align: center;
   opacity: 0.5;
 `;
