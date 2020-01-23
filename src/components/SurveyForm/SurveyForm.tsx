@@ -109,6 +109,7 @@ const SurveyForm: FC<SurveyFormProps> = ({
             </SuccessMessage>
           )
       )}
+      {errorMessage && <span>{errorMessage}</span>}
     </Form>
   );
 };

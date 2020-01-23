@@ -10,6 +10,7 @@ import {
 import { LandingPageProps } from "./types";
 import Bubble from "../../components/Bubble";
 import { config, useTransition } from "react-spring";
+import { Button } from "../../components/Elements/Button";
 
 const LandingPage: FC<LandingPageProps> = ({ history }) => {
   const handleScroll = () => {
@@ -36,12 +37,13 @@ const LandingPage: FC<LandingPageProps> = ({ history }) => {
         </WelcomeText>
       ))}
       <FlexWrapper>
+        <Button onClick={handleScroll}>Click</Button>
         <ScrollElement>
           <ScrollText>Scroll</ScrollText>
           <VerticalLine />
         </ScrollElement>
       </FlexWrapper>
-      <Bubble />
+      {/* <Bubble /> */}
     </Container>
   );
 };
