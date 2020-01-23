@@ -1,10 +1,11 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import QuestionCarousel, {
+import QuestionCarousel from "./QuestionCarousel";
+import SurveyQuestion from "../SurveyQuestion";
+import {
   NextQuestionButton,
   PrevQuestionButton
-} from "./QuestionCarousel";
-import SurveyQuestion from "../SurveyQuestion";
+} from "./QuestionCarousel.styles";
 
 const mockQuestions = [
   {

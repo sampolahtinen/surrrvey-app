@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { breakPoints } from "../../styles/breakpoints";
 
 export const QuestionList = styled.ul``;
 
@@ -10,6 +11,9 @@ export const QuestionTitle = styled.h3`
 export const QuestionsContainer = styled.div`
   width: 400px;
   height: 300px;
+  @media (max-width: ${breakPoints.phone}) {
+    width: 100%;
+  }
 `;
 
 export const Option = styled.li<{ selected: boolean }>`

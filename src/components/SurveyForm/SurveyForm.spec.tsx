@@ -3,8 +3,8 @@ import { mount } from "enzyme";
 import SurveyForm from "./SurveyForm";
 import { Title, Subtitle, Form } from "./SurveyForm.styles";
 import { Button } from "../Elements/Button";
-import { NextQuestionButton } from "../QuestionCarousel/QuestionCarousel";
 import { Option } from "../SurveyQuestion/SurveyQuestion.styles";
+import { NextQuestionButton } from "../QuestionCarousel/QuestionCarousel.styles";
 
 const mockQuestions = [
   {

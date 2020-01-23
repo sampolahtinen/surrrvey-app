@@ -29,18 +29,18 @@ exports[`SurveyForm  Component renders 1`] = `
 >
   <styled.form>
     <form
-      className="sc-fzXfLO fWeOZL"
+      className="sc-fzXfLP gkQIch"
     >
       <styled.h1>
         <h1
-          className="sc-fzXfLP xGwGK"
+          className="sc-fzXfLQ eWlRDr"
         >
           testTitle
         </h1>
       </styled.h1>
       <styled.h2>
         <h2
-          className="sc-fzXfLQ jMdyVK"
+          className="sc-fzXfLR dwlVMg"
         >
           testSubtitle
         </h2>
@@ -70,106 +70,112 @@ exports[`SurveyForm  Component renders 1`] = `
         }
         selectedOption=""
       >
-        <div>
-          <SurveyQuestion
-            onOptionSelect={[Function]}
-            options={
-              Array [
-                "test1",
-                "test2",
-              ]
-            }
-            selectedOption=""
-            title="firstQuestion"
+        <styled.div
+          className="question-carousel"
+        >
+          <div
+            className="sc-AykKJ OwdgA question-carousel"
           >
-            <styled.div
-              style={
-                Object {
-                  "marginBottom": "3.2rem",
-                }
+            <SurveyQuestion
+              onOptionSelect={[Function]}
+              options={
+                Array [
+                  "test1",
+                  "test2",
+                ]
               }
+              selectedOption=""
+              title="firstQuestion"
             >
-              <div
-                className="sc-AykKE FJqhk"
+              <styled.div
                 style={
                   Object {
                     "marginBottom": "3.2rem",
                   }
                 }
               >
-                <styled.h3>
-                  <h3
-                    className="sc-AykKD bLtnPA"
-                  >
-                    firstQuestion
-                  </h3>
-                </styled.h3>
-                <styled.ul>
-                  <ul
-                    className="sc-AykKC fmcvyS"
-                  >
-                    <styled.li
-                      key="firstQuestiontest1"
-                      onClick={[Function]}
-                      selected={false}
+                <div
+                  className="sc-AykKE gNSoTB"
+                  style={
+                    Object {
+                      "marginBottom": "3.2rem",
+                    }
+                  }
+                >
+                  <styled.h3>
+                    <h3
+                      className="sc-AykKD bLtnPA"
                     >
-                      <li
-                        className="sc-AykKF iPtPKR"
+                      firstQuestion
+                    </h3>
+                  </styled.h3>
+                  <styled.ul>
+                    <ul
+                      className="sc-AykKC fmcvyS"
+                    >
+                      <styled.li
+                        key="firstQuestiontest1"
                         onClick={[Function]}
                         selected={false}
                       >
-                        test1
-                      </li>
-                    </styled.li>
-                    <styled.li
-                      key="firstQuestiontest2"
-                      onClick={[Function]}
-                      selected={false}
-                    >
-                      <li
-                        className="sc-AykKF iPtPKR"
+                        <li
+                          className="sc-AykKF iPtPKR"
+                          onClick={[Function]}
+                          selected={false}
+                        >
+                          test1
+                        </li>
+                      </styled.li>
+                      <styled.li
+                        key="firstQuestiontest2"
                         onClick={[Function]}
                         selected={false}
                       >
-                        test2
-                      </li>
-                    </styled.li>
-                  </ul>
-                </styled.ul>
-              </div>
-            </styled.div>
-          </SurveyQuestion>
-          <styled.div>
-            <div
-              className="sc-AykKH iijtjJ"
-            >
-              <Styled(Styled(styled.button))
-                disabled={true}
-                onClick={[Function]}
+                        <li
+                          className="sc-AykKF iPtPKR"
+                          onClick={[Function]}
+                          selected={false}
+                        >
+                          test2
+                        </li>
+                      </styled.li>
+                    </ul>
+                  </styled.ul>
+                </div>
+              </styled.div>
+            </SurveyQuestion>
+            <styled.div>
+              <div
+                className="sc-AykKH iijtjJ"
               >
-                <button
-                  className="sc-AykKG sc-AykKI sc-AykKJ bxMDJn"
+                <Styled(Styled(styled.button))
                   disabled={true}
                   onClick={[Function]}
                 >
-                  Back
-                </button>
-              </Styled(Styled(styled.button))>
-              <Styled(styled.button)
-                disabled={false}
-                onClick={[Function]}
-              >
-                <button
-                  className="sc-AykKG sc-AykKI kANYNs"
+                  <button
+                    className="sc-AykKG sc-AykKI sc-AykKK hvtdWk"
+                    disabled={true}
+                    onClick={[Function]}
+                  >
+                    Back
+                  </button>
+                </Styled(Styled(styled.button))>
+                <Styled(styled.button)
                   disabled={false}
                   onClick={[Function]}
                 >
-                  Next
-                </button>
-              </Styled(styled.button)>
-            </div>
-          </styled.div>
-        </div>
+                  <button
+                    className="sc-AykKG sc-AykKI kANYNs"
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    Next
+                  </button>
+                </Styled(styled.button)>
+              </div>
+            </styled.div>
+          </div>
+        </styled.div>
       </QuestionCarousel>
     </form>
   </styled.form>

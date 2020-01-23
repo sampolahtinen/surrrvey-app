@@ -1,24 +1,12 @@
 import React, { FC, useState, useEffect } from "react";
 import SurveyQuestion from "../SurveyQuestion";
-import styled, { css } from "styled-components";
-import { Button } from "../Elements/Button";
 import { QuestionCarouselProps } from "./types";
-
-export const ButtonsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const NextQuestionButton = styled(Button)`
-  ${props =>
-    props.disabled &&
-    css`
-      background-color: grey;
-      border: 0;
-    `}
-`;
-
-export const PrevQuestionButton = styled(NextQuestionButton)``;
+import {
+  QuestionCarouselContainer,
+  ButtonsWrapper,
+  PrevQuestionButton,
+  NextQuestionButton
+} from "./QuestionCarousel.styles";
 
 const QuestionCarousel: FC<QuestionCarouselProps> = ({
   questions,
@@ -42,7 +30,7 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
   };
 
   return (
-    <div>
+    <QuestionCarouselContainer className="question-carousel">
       <SurveyQuestion
         title={questions[currentQuestionIndex].title}
         options={questions[currentQuestionIndex].options}
@@ -63,7 +51,7 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
           Next
         </NextQuestionButton>
       </ButtonsWrapper>
-    </div>
+    </QuestionCarouselContainer>
   );
 };
 
