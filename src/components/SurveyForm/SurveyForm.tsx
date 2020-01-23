@@ -6,6 +6,7 @@ import QuestionCarousel from "../QuestionCarousel";
 import { Subtitle, Form, Title, SuccessMessage } from "./SurveyForm.styles";
 import { Button } from "../Elements/Button";
 import { APISurveyCompletion } from "../../api/types";
+import { colors } from "../../styles/colors";
 
 const SurveyForm: FC<SurveyFormProps> = ({
   title,
@@ -105,6 +106,9 @@ const SurveyForm: FC<SurveyFormProps> = ({
           item && (
             <SuccessMessage style={props}>
               <span>Success!</span>
+              <span style={{ fontSize: "20px", color: colors.darkGrey }}>
+                Your response was delivered.
+              </span>
               <Link to="/surveys">Go back to Survey list</Link>
             </SuccessMessage>
           )

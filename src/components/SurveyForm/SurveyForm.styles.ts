@@ -14,6 +14,9 @@ export const SuccessMessage = styled(animated.div)`
   align-items: center;
   background-color: ${colors.white};
   flex-wrap: wrap;
+  border-radius: 16px;
+  box-shadow: 10px 10px 42px 14px rgba(0, 0, 0, 0.2);
+
   span {
     display: block;
     color: ${colors.green};
