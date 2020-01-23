@@ -1,10 +1,13 @@
 import React, { FC, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
+import whyDidYouRender from "@welldone-software/why-did-you-render";
 import { getSurveyDetails, postSurveyCompletion } from "../../api/surveys";
 import Layout from "../../components/Layout/Layout";
 import { SurveyDetailsPageProps, FormStatus } from "./types";
 import { FlexWrapper } from "./SurveyDetailsPage.styles";
 import SurveyForm from "../../components/SurveyForm";
+
+whyDidYouRender(React);
 
 const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
   const id = match.params.id;
@@ -14,6 +17,7 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
     isCompleted: false,
     error: ""
   });
+
   const postCompletion = async (formData: any) => {
     try {
       const response = await postSurveyCompletion(id, formData);
@@ -29,6 +33,7 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
       });
     }
   };
+
   return (
     <Layout>
       <FlexWrapper className="survey-deytails-page">
@@ -45,10 +50,12 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
             />
           </>
         )}
-        {!error && <span>{error}</span>}
+        {error && <span>{error}</span>}
       </FlexWrapper>
     </Layout>
   );
 };
+
+SurveyDetailsPage.whyDidYouRender = true;
 
 export default SurveyDetailsPage;

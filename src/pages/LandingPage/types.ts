@@ -1,3 +1,7 @@
 import { RouteComponentProps } from "react-router";
+import { History, LocationState } from "history";
 
-export interface LandingPageProps extends RouteComponentProps {}
+export type LandingPageProps = {
+  // history: Pick<RouteComponentProps, "history">;
+  history: History<LocationState>;
+};

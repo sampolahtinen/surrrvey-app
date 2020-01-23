@@ -26,7 +26,7 @@ export const SuccessMessage = styled(animated.div)`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
   position: relative;
   width: 500px;
   display: flex;

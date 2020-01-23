@@ -32,8 +32,14 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
     onQuestionChange(currentQuestionIndex);
   }, [currentQuestionIndex, onQuestionChange]);
 
-  const handleNext = () => setCurrentQuestion(currentQuestionIndex + 1);
-  const handlePrev = () => setCurrentQuestion(currentQuestionIndex - 1);
+  const handleNext = (e: React.MouseEvent<any>) => {
+    e.preventDefault();
+    setCurrentQuestion(currentQuestionIndex + 1);
+  };
+  const handlePrev = (e: React.MouseEvent<any>) => {
+    e.preventDefault();
+    setCurrentQuestion(currentQuestionIndex - 1);
+  };
 
   return (
     <div>

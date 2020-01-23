@@ -1,8 +1,7 @@
-import { AxiosPromise } from "axios";
 import { useEffect, useState } from "react";
 
 export function useFetch(
-  callback: (params?: any) => AxiosPromise,
+  callback: (params?: any) => Promise<any>,
   params?: any
 ) {
   const [results, setResults] = useState<any>({});
@@ -10,6 +9,7 @@ export function useFetch(
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    console.log("running");
     const fetchData = async () => {
       try {
         const response = await callback(params);

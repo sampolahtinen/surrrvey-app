@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import NavBar from "./NavBar";
 import { StyledNavLink } from "./NavBar.styles";
-import { routes } from "../../lib/routes";
+import { routes } from "../../globals/routes";
 
 describe("NavBar Component", () => {
   const wrapper = mount(

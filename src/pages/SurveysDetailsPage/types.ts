@@ -1,6 +1,6 @@
-import { RouteComponentProps, match } from "react-router";
+import { match } from "react-router";
 
-export interface SurveyDetailsPageProps extends RouteComponentProps {
+export interface SurveyDetailsPageProps {
   match: match<{ id: string }>;
 }
 

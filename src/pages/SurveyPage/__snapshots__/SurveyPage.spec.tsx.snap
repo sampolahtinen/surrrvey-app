@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SurveyPage Component renders 1`] = `
+<Layout>
+  <div
+    className="surveys-page"
+  >
+    <h1
+      style={
+        Object {
+          "textDecoration": "underline",
+        }
+      }
+    >
+      Surveys
+    </h1>
+    <span />
+  </div>
+</Layout>
+`;

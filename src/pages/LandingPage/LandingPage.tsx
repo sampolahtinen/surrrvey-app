@@ -9,7 +9,7 @@ import {
 } from "./LandingPage.styles";
 import { LandingPageProps } from "./types";
 import Bubble from "../../components/Bubble";
-import { useSpring, config, useTransition } from "react-spring";
+import { config, useTransition } from "react-spring";
 
 const LandingPage: FC<LandingPageProps> = ({ history }) => {
   const handleScroll = () => {
@@ -18,13 +18,7 @@ const LandingPage: FC<LandingPageProps> = ({ history }) => {
     history.push("/surveys");
   };
 
-  const props = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    config: config.slow
-  });
-
-  const text = "Welcome to Survey App!";
+  const text = "Welcome to Surrrvey App!";
 
   const transitions = useTransition(text, null, {
     from: { transform: "translate3d(0,-10%,0)", opacity: 0 },
@@ -34,12 +28,12 @@ const LandingPage: FC<LandingPageProps> = ({ history }) => {
     config: config.slow
   });
 
-  console.log(transitions);
-
   return (
-    <Container className="landing-page" onWheel={handleScroll} style={props}>
+    <Container className="landing-page" onWheel={handleScroll}>
       {transitions.map(({ item, props }) => (
-        <WelcomeText style={props}>{item}</WelcomeText>
+        <WelcomeText key={item} style={props}>
+          {item}
+        </WelcomeText>
       ))}
       <FlexWrapper>
         <ScrollElement>

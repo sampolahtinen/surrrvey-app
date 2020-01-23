@@ -3,7 +3,7 @@ import { SurveyFormProps } from "./types";
 import { Link } from "react-router-dom";
 import { config, useTransition } from "react-spring";
 import QuestionCarousel from "../QuestionCarousel";
-import { Subtitle, Wrapper, Title, SuccessMessage } from "./SurveyForm.styles";
+import { Subtitle, Form, Title, SuccessMessage } from "./SurveyForm.styles";
 import { Button } from "../Elements/Button";
 import { APISurveyCompletion } from "../../api/types";
 
@@ -64,7 +64,8 @@ const SurveyForm: FC<SurveyFormProps> = ({
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     onSubmit(selectedOptions);
   };
 
@@ -79,7 +80,7 @@ const SurveyForm: FC<SurveyFormProps> = ({
   });
 
   return (
-    <Wrapper>
+    <Form>
       <Title>{title}</Title>
       <Subtitle>{subtitle}</Subtitle>
       <QuestionCarousel
@@ -92,6 +93,7 @@ const SurveyForm: FC<SurveyFormProps> = ({
       />
       {currentQuestion === questions.length - 1 && (
         <Button
+          type="submit"
           onClick={handleSubmit}
           style={{ marginTop: "2rem", width: "150px", height: "50px" }}
         >
@@ -107,7 +109,7 @@ const SurveyForm: FC<SurveyFormProps> = ({
             </SuccessMessage>
           )
       )}
-    </Wrapper>
+    </Form>
   );
 };
 
