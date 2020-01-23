@@ -5,9 +5,9 @@ exports[`SurveyDetailsPage Component renders 1`] = `
   <styled.div
     className="survey-deytails-page"
   >
-    <span>
+    <styled.span>
       Loading
-    </span>
+    </styled.span>
   </styled.div>
 </Layout>
 `;

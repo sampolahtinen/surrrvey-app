@@ -10,6 +10,7 @@ const SurveysPage: FC = () => {
     <Layout>
       <div className="surveys-page">
         <h1 style={{ textDecoration: "underline" }}>Surveys</h1>
+        {/* Displaying loading component here would damage the UX */}
         {!loading && <SurveyList surveys={response.surveys} />}
         {!error && <span>{error}</span>}
       </div>

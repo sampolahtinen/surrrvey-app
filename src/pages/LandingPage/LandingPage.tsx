@@ -7,7 +7,6 @@ import {
   CallToActionButton
 } from "./LandingPage.styles";
 import { LandingPageProps } from "./types";
-import Bubble from "../../components/Bubble";
 import { config, useTransition } from "react-spring";
 import { colors } from "../../styles/colors";
 

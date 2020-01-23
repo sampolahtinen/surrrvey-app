@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import SurveyDetailsPage from "./SurveyDetailsPage";
 import SurveyForm from "../../components/SurveyForm";
+import Loading from "../../components/Loading";
 
 const mockSurveyDetails = {
   survey: {
@@ -44,7 +45,7 @@ describe("SurveyDetailsPage Component", () => {
   it("displays loading before data has been fetched", () => {
     expect(
       wrapper
-        .find("span")
+        .find(Loading)
         .first()
         .text()
     ).toBe("Loading");

@@ -6,6 +6,7 @@ import Layout from "../../components/Layout/Layout";
 import { SurveyDetailsPageProps, FormStatus } from "./types";
 import { FlexWrapper } from "./SurveyDetailsPage.styles";
 import SurveyForm from "../../components/SurveyForm";
+import Loading from "../../components/Loading";
 
 whyDidYouRender(React);
 
@@ -38,8 +39,9 @@ const SurveyDetailsPage: FC<SurveyDetailsPageProps> = ({ match }) => {
     <Layout>
       <FlexWrapper className="survey-deytails-page">
         {/* //TODO: create loading component */}
-        {loading && <span>Loading</span>}
-        {!loading && (
+        {loading ? (
+          <Loading>Loading</Loading>
+        ) : (
           <>
             <SurveyForm
               title={survey.title}
