@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar Component renders 1`] = `
+<Fragment>
+  <NavBar />
+  <styled.div>
+    <div
+      className="test"
+    >
+      test
+    </div>
+    <div
+      className="test"
+    >
+      test
+    </div>
+    <div
+      className="test"
+    >
+      test
+    </div>
+  </styled.div>
+</Fragment>
+`;

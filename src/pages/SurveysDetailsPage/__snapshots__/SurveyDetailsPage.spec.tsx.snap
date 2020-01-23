@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SurveyDetailsPage Component renders 1`] = `
+<Layout>
+  <styled.div
+    className="survey-deytails-page"
+  >
+    <styled.span>
+      Loading
+    </styled.span>
+  </styled.div>
+</Layout>
+`;
