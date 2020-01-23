@@ -1,12 +1,14 @@
+# Surrrvey App #
 Surrrvey App, is an application that let's user answer to a survey.
 
-Live Demo:
+**Live Demo:**
 http://surrrvey-app.herokuapp.com/
 
 ## How to run locally
 1. Clone this repository
-2. Create `.env` file and request a valid `API_URL` from your contact person
-2. Run `yarn start`
+2. Create `.env` file at the root of the project and request a valid `API_URL` from your contact person
+2. Install dependecies with `yarn install`
+2. Run the project `yarn start`
 
 ## CI/CD
 This github repository is connected to a Circle CI workflow, which automatically runs unit tests and builds. Each opened PR deploys a review app on Heroku after a succesful workflow run. Once a PR is reviewed and merged back to the `master` branch, the workflow is ran again and the app is deployed into the production.
