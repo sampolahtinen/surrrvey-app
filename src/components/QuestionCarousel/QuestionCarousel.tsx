@@ -39,6 +39,8 @@ const QuestionCarousel: FC<QuestionCarouselProps> = ({
         selectedOption={selectedOption}
         onOptionSelect={param => {
           onOptionSelect(param);
+          // on selection automatically go to next question
+          // Wait 100ms, so user can see that they made a selection
           !isLastIndex(questions, currentQuestionIndex) &&
             setTimeout(() => handleNext(), 100);
         }}

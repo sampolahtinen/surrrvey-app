@@ -65,8 +65,10 @@ const SurveyForm: FC<SurveyFormProps> = ({
     }
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.MouseEvent) => {
     e.preventDefault();
+    // Before onSubmit, I would do validation of the options.
+    // Since there is no requirements for selections, I have decided to leave validation
     onSubmit(selectedOptions);
   };
 
